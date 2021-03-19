@@ -59,9 +59,19 @@ def better_largest_contiguous_subsum(list)
     #one var tracks largest sum, one var tracks current sum
     #while loops - two pointers? 
     #compare l/r put sum into 'sub_sum', increment/decrement
+    largest_sum = list.first
+    current = list.first
 
+    (1...list.length).each do |i|
+        current += list[i] if list[i] > 0
+    end
+
+
+    largest_sum
 end
 #     list = [2, 3, -6, 7, -6, 7]
+
+
 #     largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
 # Example 3:
 
