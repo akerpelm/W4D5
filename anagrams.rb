@@ -43,8 +43,10 @@ first_anagram?("elvis", "lives")    #=> true
 second_anagram?("elvis", "lives")    #=> true
 
 def third_anagram?(str_1, str_2)
-    str_1.sort == str_2.sort
+    prev = Time.now
+    str_1.chars.sort == str_2.chars.sort
+    p Time.now - prev
 end
 
 third_anagram?("elvis", "lives")    #=> true
-third_anagram?("elvis", "lives")
+# p third_anagram?("elvis", "pancake")
