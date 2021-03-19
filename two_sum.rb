@@ -15,27 +15,31 @@ def bad_two_sum?(arr, target_sum)
     return false
 end
 
-arr = [0, 1, 5, 7]
-p bad_two_sum?(arr, 6) # => should be true
-p bad_two_sum?(arr, 10) # => should be false
+# arr = [0, 1, 5, 7]
+# p bad_two_sum?(arr, 6) # => should be true
+# p bad_two_sum?(arr, 10) # => should be false
 
 # sorting
 # 
 def okay_two_sum?(arr, target_sum)
-    
-
+    return nil if arr.length == 0
     mid = arr.length / 2
     case (arr[mid] + arr[mid - 1]) <=> target_sum
     when 1
-        okay_two_sum?(arr.take(mid - 1))
-    when 
-        
-    else
-        
+        okay_two_sum?(arr.take(mid - 1), target_sum) ##??
+    when 0
+        return true
+    when -1
+        sub_search = okay_two_sum?(arr.drop(mid + 1), target_sum)
+        if sub_search.nil?
+            false
+        else
+            return true
+        end
     end
 end
 
-arr = [0, 1, 5, 7, 9]
+arr = [0, 1, 5, 7]
             
 p okay_two_sum?(arr, 6) # => should be true
 p okay_two_sum?(arr, 10) # => should be false
