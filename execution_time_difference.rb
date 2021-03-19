@@ -49,12 +49,12 @@ def largest_contiguous_subsum(list)
             subs << list[i_1..i_2].sum if i_2 > i_1 #O(n)
         end
     end
-    subs.max #O(1)
+    subs.max #O(n)
 end
 
 #better = O(n)
 def better_largest_contiguous_subsum(list)
-    largest = 0
+    largest = list[0]
     current = list[0]
     i = 1
     while i < list.length #O(n)
@@ -72,3 +72,6 @@ p largest_contiguous_subsum(list) # => 8
 
 list = [2, 3, -6, 7, -6, 7]
 p better_largest_contiguous_subsum(list)
+
+ list = [-5, -3, -6, -1, -8]
+ p better_largest_contiguous_subsum(list)

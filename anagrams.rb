@@ -41,3 +41,10 @@ end
 
 first_anagram?("elvis", "lives")    #=> true
 second_anagram?("elvis", "lives")    #=> true
+
+def third_anagram?(str_1, str_2)
+    str_1.sort == str_2.sort
+end
+
+third_anagram?("elvis", "lives")    #=> true
+third_anagram?("elvis", "lives")
