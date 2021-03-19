@@ -41,7 +41,7 @@ p my_worse_min(list)
 
 
 
-#worse
+#worse O(n^3())
 def largest_contiguous_subsum(list) 
     subs = [] #O(1)
     list.each_with_index do |ele_1, i_1| #O(n)
@@ -51,33 +51,24 @@ def largest_contiguous_subsum(list)
     end
     subs.max #O(1)
 end
-#O(1) + #O(n) * #O(n) * O(n) + O(1)
-# = O(n^3) = exponential
 
-#better
+#better = O(n)
 def better_largest_contiguous_subsum(list)
-    #one var tracks largest sum, one var tracks current sum
-    #while loops - two pointers? 
-    #compare l/r put sum into 'sub_sum', increment/decrement
-    largest_sum = list.first
-    current = list.first
-
-    (1...list.length).each do |i|
-        current += list[i] if list[i] > 0
+    largest = 0
+    current = list[0]
+    i = 1
+    while i < list.length #O(n)
+        current = 0 if current < 0 
+        current += list[i]
+        largest = current if current > largest
+        i+=1
     end
-
-
-    largest_sum
+    largest
 end
-#     list = [2, 3, -6, 7, -6, 7]
-
-
-#     largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
-# Example 3:
-
-#     list = [-5, -1, -3]
-#     largest_contiguous_subsum(list) # => -1 (from [-1])
-
 
 list = [5, 3, -7]
 p largest_contiguous_subsum(list) # => 8
+
+
+list = [2, 3, -6, 7, -6, 7]
+p better_largest_contiguous_subsum(list)
